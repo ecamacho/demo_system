@@ -1,10 +1,13 @@
 use Mix.Config
 
 config :example_system, ExampleSystemWeb.Endpoint,
-  debug_errors: true,
+  debug_errors: false,
   code_reloader: true,
   check_origin: false,
-  http: [transport_options: [num_acceptors: 5]],
+  http: [transport_options: [num_acceptors: 5],
+  protocol_options: [
+    idle_timeout: 480_000
+  ]],
   watchers: [
     node: [
       "node_modules/webpack/bin/webpack.js",

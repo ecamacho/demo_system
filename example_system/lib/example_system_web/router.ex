@@ -20,10 +20,14 @@ defmodule ExampleSystemWeb.Router do
 
   scope "/", ExampleSystemWeb do
     pipe_through :browser
-
     live("/", Math.Sum)
     live("/load", Load.Dashboard)
     live("/services", Services.Dashboard)
     live("/top", Top.Dashboard)
+  end
+
+  scope "/api", ExampleSystemWeb do
+    pipe_through :api
+    post "/sum", MathController, :sum
   end
 end
